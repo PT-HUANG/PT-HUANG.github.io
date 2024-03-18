@@ -8,7 +8,7 @@
   </head>
   <body>
     <main class="main">
-      <div class="profile smaller">
+      <div class="profile div1 smaller">
       	<span>個人簡介</span><img src="./img/expand.png" class="button button1" /><br>
       	<span class="profile__content fold">
 	      	<span>您好，我叫做寶田，也可以叫我Ten。
@@ -26,7 +26,7 @@
 		  		</div>
 		  	</span>
       </div>
-      <div class="side__projects smaller">
+      <div class="side__projects div2 smaller">
       	<span>為了成為軟體工程師，做過什麼努力？</span><img src="./img/expand.png" class="button button2" /><br>
       	<span class="side__projects__content fold">
 	      	<span>從2023年2月開始利用線上課程(Lidemy鋰學院)，從基礎的Command Line、Git、到Javascript(包含online judge)、Html、CSS，從2024年12月底開始學習PHP，利用XAMPP(mySQL)進行後端資料庫的建置。
@@ -65,14 +65,14 @@
 					(4) 分頁功能</span>
 				<span>
       </div>
-      <div class="about__learning smaller">
+      <div class="about__learning div3 smaller">
       	<span>學習計畫安排</span><img src="./img/expand.png" class="button button3" /><br>
       	<span class="fold">目前仍然在職中，如果開始 WeHelp Bootcamp 的訓練計劃，預計4月份跟公司提離職，4月份採用邊工作邊學習的模式，5月開始就可以全心投入訓練計畫。
 
 				目前學習的方式是利用平日上班前2個小時進行學習，休假日時的學習時間約8小時。
 				開始課程後估計一個星期可以有50-60小時的學習時間</span>
       </div>
-      <div class="future smaller">
+      <div class="future div4 smaller">
       	<span>是否有想要加入的公司？</span><img src="./img/expand.png" class="button button4" /><br>
       	<span class="fold">沒有，理由有3個：
 
@@ -82,7 +82,7 @@
 
 				(3)我想要透過Bootcamp來確定自己的能力可以做到什麼程度</span>
       </div>
-      <div class="negative__experience smaller">
+      <div class="negative__experience div5 smaller">
       	<span>請描述一件產生明顯負面情緒的經歷</span><img src="./img/expand.png" class="button button5" /><br>
       	<span class="fold">其實我本來是想要申請Appwork School的，但3/12號的時候發現他們今年度開的梯次是配合政府「數位青年 T 大使推動計畫」，只限定開放給剛畢業的大學生。
 
@@ -93,15 +93,30 @@
 				即便遇到了不如意的事情，也要相信自己能有再站起來的勇氣，持續面對挑戰。
 				平時偶爾也會去運動、戶外活動(釣魚)、跟朋友聊天等等，也喜歡看動畫放鬆心情。</span>
       </div>
-      <div class="developement smaller">
+      <div class="developement div6 smaller">
       	<span>關於這份申請網頁，分享一個開發時的技術心得</span><img src="./img/expand.png" class="button button6" /><br>
-      	<span class="fold">關於按鈕點擊後，利用Javascript顯示內容的部分，原本設定想要用querySelectorAll+ for loop或是forEach的方式逐一對每一個元素新增Eventlistener，但以現階段的能力還沒辦法找出問題點在哪邊，所以暫時用比較土法煉鋼的方式去完成這個功能。</span>
+      	<span class="fold">有關點擊箭頭圖案，顯示或是縮小內容的部分做簡單的技術說明：
+
+					一開始是採用土法煉鋼的方式，針對每個要操作的元素做css class的toggle
+					重複的程式碼相當冗長，也不容易新增、維護
+
+					<code>const button1 = document.querySelector('.button1');
+					button1.addEventListener('click', function (){
+					  document.querySelector('.profile').classList.toggle('smaller');
+					  document.querySelector('.button1 ~ span').classList.toggle('fold');
+					})</code>
+
+					經過嘗試後，成功利用querySelectorAll、for loop實作出想要的功能
+					原本是用forEach去操作要選取的元素，但是發現這樣永遠改變的只有第一欄位，
+					後來才利用陣列的方式儲存、提取資料，
+					利用querySelector的特性先做出所需要的classlist
+				</span>
       </div>      
-      <div class="about__interpersonal smaller">
+      <div class="about__interpersonal div7 smaller">
       	<span>請用簡短兩三句話，描述對你而言，最重要的一項人際交往原則</span><img src="./img/expand.png" class="button button7" /><br>
       	<span class="fold">朋友重質不重量，與其增加廣度，我比較喜歡經營深厚的友誼關係。</span>
       </div>
-      <div class="others smaller">
+      <div class="others div8 smaller">
       	<span>其他想要對我們說的事情</span><img src="./img/expand.png" class="button button8" /><br>
       	<span class="fold">雖然發現WeHelp的時間點很晚，但我是很真誠的在寫這份申請書，也做好準備了。
 
@@ -110,52 +125,16 @@
     </main>
   </body>
   <script>
-  	const button1 = document.querySelector('.button1');
-  	button1.addEventListener('click', function (){
-  		document.querySelector('.profile').classList.toggle('smaller');
-      document.querySelector('.button1 ~ span').classList.toggle('fold');
-  	})
-
-  	const button2 = document.querySelector('.button2');
-  	button2.addEventListener('click', function (){
-  		document.querySelector('.side__projects').classList.toggle('smaller');
-      document.querySelector('.button2 ~ span').classList.toggle('fold');
-  	})
-
-  	const button3 = document.querySelector('.button3');
-  	button3.addEventListener('click', function (){
-  		document.querySelector('.about__learning').classList.toggle('smaller');
-      document.querySelector('.button3 ~ span').classList.toggle('fold');
-  	})
-
-  	const button4 = document.querySelector('.button4');
-  	button4.addEventListener('click', function (){
-  		document.querySelector('.future').classList.toggle('smaller');
-      document.querySelector('.button4 ~ span').classList.toggle('fold');
-  	})
-			
-		const button5 = document.querySelector('.button5');
-  	button5.addEventListener('click', function (){
-  		document.querySelector('.negative__experience').classList.toggle('smaller');
-      document.querySelector('.button5 ~ span').classList.toggle('fold');
-  	})
-
-  	const button6 = document.querySelector('.button6');
-  	button6.addEventListener('click', function (){
-  		document.querySelector('.developement').classList.toggle('smaller');
-      document.querySelector('.button6 ~ span').classList.toggle('fold');
-  	})
-
-  	const button7 = document.querySelector('.button7');
-  	button7.addEventListener('click', function (){
-  		document.querySelector('.about__interpersonal').classList.toggle('smaller');
-      document.querySelector('.button7 ~ span').classList.toggle('fold');
-  	})
-
-  	const button8 = document.querySelector('.button8');
-  	button8.addEventListener('click', function (){
-  		document.querySelector('.others').classList.toggle('smaller');
-      document.querySelector('.button8 ~ span').classList.toggle('fold');
-  	})
+  	const elements = document.querySelectorAll('.main > div > img:nth-child(2)');
+  	const classlist1 = ['.div1', '.div2', '.div3', '.div4', '.div5', '.div6', '.div7', '.div8'];
+  	const classlist2 = ['.button1 ~ span', '.button2 ~ span', '.button3 ~ span', '.button4 ~ span', '.button5 ~ span', '.button6 ~ span', '.button7 ~ span', '.button8 ~ span'];
+  	var array = [];
+  	for (let i=0; i<elements.length; i++){
+  		array.push(elements[i]);
+  		array[i].addEventListener('click', function (){
+  			document.querySelector(classlist1[i]).classList.toggle('smaller');
+  			document.querySelector(classlist2[i]).classList.toggle('fold');
+  		})
+  	}
   </script>
 </html>
